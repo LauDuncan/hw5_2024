@@ -67,17 +67,21 @@ header {
 .card {
     display: flex;
     flex-direction: column;
-    flex-basis: 450px;
 }
 
+/* NOTE: I understand that setting flex-direction to row would allow flex-basis to control width instead of length. However, given that I had to use flex-direction column layout on both .pricing and .card containers, I was unable to find a method to "specify an initial “size” of 450px" with flex properties alone. Therefore, I have used the width property to control the card's width here. 
+
+I would appreciate it if we could come back to this question in class or in discussion sections. */
+
 .card > ul {
-    /* width: 450px; */
+    width: 450px;
 }
 
 .pricing {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 /* Step 9 + 10: Style the images in the gallery class. These elements will have a solid 10px border with a color of #50C7C7, 10px margin on all four sides and a width of 300px. Edit the css for the gallery class to use flex to match our example.*/
@@ -93,6 +97,8 @@ header {
     margin: 10px;
     width: 300px;
 }
+
+/* The following specifications are for when the screen-size is greater than 900px */
 
 @media screen and (min-width: 900px) {
     /* Step 11: Edit the css for the header tag (all instances) and the nav_links class to match our example using flex-properties. The logo should be as far to the left as possible and the links as far to the right as possible. Use flex properties, NOT position properties. */
@@ -117,6 +123,10 @@ header {
         flex-basis: 275px;
     }
 
+    .card > ul {
+        width: auto;
+    }
+
     body > header:first-of-type {
         position: sticky;
         top: 0;
@@ -133,6 +143,9 @@ header {
         animation: none;
     }
 }
+
+
+/* The following specifications are for when the page is printed in portrait mode. */
 
 @media print {
 
@@ -165,7 +178,10 @@ header {
     .card {
         border: solid 2px #45ADDD;
         flex-basis: 325px;
-        border-radius: 50px 50px 0px 0px;
+    }
+
+    .card > ul {
+        width: auto;
     }
 
     /* Step 20: No part of the gallery should be visible. */
@@ -177,7 +193,7 @@ header {
     /* Step 21: Without using list-style-type add the thumbs up entity as shown in the cards. */
 
     .card ul li:nth-child(2)::after {
-        content: " 👍";
+        content: "👍";
     }
 
 }
